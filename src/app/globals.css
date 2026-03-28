@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════
+   TERMINAL CLI DESIGN SYSTEM — vladburca.com inspired
+   ═══════════════════════════════════════════════ */
+
+@theme inline {
+  /* ── Color Palette ── */
+
+  /* MacOS Terminal Dark Theme Colors (similar to GitHub Dark Dimmed) */
+  --color-terminal-bg: #2B2C2F;
+  --color-terminal-frame: #2B2C2F;
+  --color-terminal-text: #c9d1d9;
+  --color-terminal-muted: #8b949e;
+
+  --color-terminal-accent: #ff7b72;
+  /* Red/Orange for prompts */
+  --color-terminal-highlight: #58a6ff;
+  /* Blue for links/commands */
+  --color-terminal-success: #3fb950;
+  /* Green for success */
+
+  /* ── Fonts ── */
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "SF Mono", "Fira Code", "Consolas", monospace;
+
+  /* ── Radii ── */
+  --radius-terminal: 0.75rem;
+
+  /* ── Shadows ── */
+  --shadow-terminal: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+/* ── Base Styles ── */
+:root {
+  color-scheme: dark;
+}
+
+[data-theme="retro"] {
+  --color-terminal-bg: #050505;
+  --color-terminal-frame: #000000;
+  --color-terminal-text: #4af626;
+  /* Phosphor Green */
+  --color-terminal-muted: #2e9619;
+  --color-terminal-accent: #ffb000;
+  /* Amber */
+  --color-terminal-highlight: #ffffff;
+}
+
+[data-theme="retro"] body {
+  text-shadow: 0 0 5px rgba(74, 246, 38, 0.5);
+}
+
+[data-theme="glass"] {
+  --color-terminal-bg: rgba(255, 255, 255, 0.05);
+  --color-terminal-frame: transparent;
+  --color-terminal-text: #ffffff;
+  --color-terminal-muted: rgba(255, 255, 255, 0.6);
+  --color-terminal-accent: #00f2ff;
+  /* Cyan */
+  --color-terminal-highlight: #ff006e;
+  /* Magenta */
+}
+
+body {
+  background: var(--color-terminal-frame);
+  color: var(--color-terminal-text);
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+::selection {
+  background: var(--color-terminal-highlight);
+  color: #fff;
+}
+
+/* ── Custom Scrollbar for Terminal Internal ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #30363d transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
+
+/* ── Utility Classes ── */
+.scrollbars-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbars-hidden {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
